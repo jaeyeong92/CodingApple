@@ -18,12 +18,12 @@
         <h4>로그인하세요</h4>
         <form action="success.html">
            <div class="my-3">
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" id="email">
            </div>
            <div class="my-3">
-             <input type="password" class="form-control">
+             <input type="password" class="form-control" id="password">
            </div>
-           <button type="submit" class="btn btn-warning">전송</button>
+           <button type="submit" class="btn btn-warning" id="send">전송</button>
            <button type="button" class="btn btn-danger" id="close">닫기</button>
         </form> 
       </div>
@@ -32,13 +32,14 @@
     <!-- Navigation Menu -->  
     <nav class="navbar navbar-light bg-light">
       <div class="container-fluid">
-        <span class="navbar-brand">Navbar</span>
+        <span class="navbar-brand">JS_Shop</span>
+        <span class="badge bg-dark">Dark 🔄</span>
         <button class="navbar-toggler" type="button">
           <span class="navbar-toggler-icon"></span>
         </button>
       </div>
     </nav>  
-      
+        
     <!-- Navigation Item -->  
     <ul class="list-group" id="test1">
       <li class="list-group-item">An item</li>
@@ -51,6 +52,10 @@
     <div class="main-bg">
         <h4>Shirts on Sale</h4>
         <button id="login-btn" class="btn btn-danger">로그인</button>
+    </div>
+
+    <div class="alert alert-danger">
+      <span id="secondNum">5</span>초 이내 구매시 사은품 증정!
     </div>
       
       
@@ -67,17 +72,64 @@
           'click',function(){
               document.getElementsByClassName('list-group')[0].classList.toggle('show');
           });
-        
-        if (3 > 1){
-          console.log('안녕')
+
+      $('form').on('submit',function(){
+        if(document.getElementById('email').value == ''){
+          alert('아이디 입력 안함');
         }
-        
-        
+        if(document.getElementById('password').value == ''){
+          alert('password 입력 안함');
+        }
+        if(document.getElementById('password').value.length < 6){
+          alert('password 좀 길게요');
+        }
+      });
+
+      //badge 홀수 클릭 시, 내부 글자를 Light로 변경, 짝수 클릭 시 다시 누르면 Dark로 변경
+      let count = 0;
+
+      // let은 재선언 X
+      let 이름 = "kim";
+      // let 이름 = "park";  불가능, var은 재선언 O
+
+      // const는 재선언 X, 재할당 X
+      const 나이 = 10;
+      // 나이 = 11;     불가능, final 상수의 의미
+
+
+      $('.badge').on('click',function(){
+        count += 1;
+        if(count % 2 == 1){
+          $('.badge').html('Light 🔄');
+          $('.badge').toggleClass('bg-white');
+          $('.badge').css('color','black');
+        } else {
+          $('.badge').html('Dark 🔄');
+          $('.badge').toggleClass('bg-white');
+          $('.badge').css('color','white');
+        }
+      });
+
+      // setTimeout(테스트함수, 3000);
+
+      // function 테스트함수(){
+      //   console.log('안녕 !!');
+      // }
+
+      let secondCount = 5;
+
+      setInterval(function(){
+        secondCount -= 1;
+        if(secondCount == 0){
+          $('.alert').hide();
+        }
+        $('#secondNum').html(secondCount);
+      }, 1000);
+
         
         
     </script>
       
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-      
   </body>
 </html>
