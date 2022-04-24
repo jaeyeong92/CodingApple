@@ -1,4 +1,17 @@
 
+.navbar {
+    /* 상단 고정 */
+    position: fixed;
+    /* 화면 가로 꽉 차게 */
+    width: 100%;
+    /* 앞으로보내기(우선순위) */
+    z-index : 5;
+}
+
+.navbar-brand {
+    font-size: 30px;
+}
+
 .alert-box {
     background-color: skyblue;
     padding: 20px;
@@ -18,6 +31,7 @@
   background : rgba(0,0,0,0.5);
   z-index : 5;
   padding: 30px;
+  /* display: none; 보다 이벤트를 잘 먹음 */
   visibility: hidden;
   opacity: 0;
   transition: all 1s;
@@ -36,6 +50,7 @@
 
 .show-modal {
     visibility: visible;
+    /* 투명도 */
     opacity: 1;
 }
 .main-bg {
@@ -43,7 +58,26 @@
     background: lightgrey;
 }
 
+/* 다크모드 */
 .dark {
     background: black;
     color: white;
+}
+
+/* 캐러셀 */
+.slide-container {
+    /* 브라우저의 폭은 100vw, 즉 3배 */
+    width: 300vw;
+    /* 1초에 걸쳐서 실행 */
+    transition: all 1s;
+}
+
+.slide-box {
+    width: 100vw;
+    /* div 블록요소를 인라인요소처럼 */
+    float: left;
+}
+
+.slide-box img {
+    width: 100%;
 }
