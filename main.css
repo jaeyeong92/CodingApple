@@ -81,3 +81,8 @@
 .slide-box img {
     width: 100%;
 }
+
+.navbar-brand {
+    font-size: 25px;
+    transition: all 1s;
+}

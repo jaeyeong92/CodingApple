@@ -239,15 +239,31 @@
       //   console.log(window.scrollY);
       // });
 
+      // 페이지 스크롤바 100px 내리면 로고 폰트사이즈 작게
+      $(window).on('scroll',function(){
+        if(window.scrollY > 100){
+          $('.navbar-brand').css('font-size','20px');
+        } else {
+          $('.navbar-brand').css('font-size','25px');
+        }
+      });
 
       // 약관을 다 읽으면 -> div의 스크롤바 내린 양 == div의 실제 높이(px단위)
       $('.lorem').on('scroll',function(){
         // var scrollSum = document.querySelector('.lorem').scrollTop;
-        var scrollSum = $('.lorem').scrollTop();
-        var scrollHeight = document.querySelector('.lorem').scrollHeight;
-        
-        console.log(scrollSum, scrollHeight);
+        //window.scrollY
+        let 스크롤양 = $('.lorem').scrollTop();
+        let 실제높이 = document.querySelector('.lorem').scrollHeight;
+        let 높이 = document.querySelector('.lorem').clientHeight;
+
+        // 스크롤양 + 높이 == 실제높이
+
+        if(스크롤양 + 높이 > 실제높이 - 10){
+          alert('다 읽음');
+        }
       });
+
+      
 
 
     </script>
